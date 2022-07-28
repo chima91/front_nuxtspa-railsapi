@@ -21,7 +21,8 @@
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
-    {{ scrollY }}
+    <app-signup-button />
+    <app-login-button />
   </v-app-bar>
 </template>
 
