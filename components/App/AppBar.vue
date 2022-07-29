@@ -7,7 +7,7 @@
     :elevation="toolbarStyle.elevation"
   >
     <app-logo @click.native="$vuetify.goTo('#scroll-top')" />
-    <!-- <app-title class="hidden-mobile-and-down" /> -->
+    <app-title class="hidden-mobile-and-down" />
     <v-spacer />
     <v-toolbar-items class="ml-2 hidden-ipad-and-down">
       <v-btn

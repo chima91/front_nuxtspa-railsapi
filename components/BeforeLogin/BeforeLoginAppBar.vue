@@ -11,9 +11,9 @@
       <app-logo />
     </nuxt-link>
 
-    <!-- <app-title
+    <app-title
       class="hidden-mobile-and-down"
-    /> -->
+    />
 
     <v-spacer />
 
