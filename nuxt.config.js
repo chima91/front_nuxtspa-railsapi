@@ -41,6 +41,10 @@ export default {
     "@nuxtjs/i18n",
   ],
 
+  publicRuntimeConfig: {
+    appName: process.env.APP_NAME,
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
@@ -59,6 +63,7 @@ export default {
           warning: "FEB65E",
           error: "FB8678",
           background: "f6f6f4",
+          appblue: "1867C0",
         },
       },
     },
@@ -67,6 +72,7 @@ export default {
   i18n: {
     locales: ["ja", "en"],
     defaultLocale: "ja",
+    strategy: "no_prefix",
     // Doc: https://kazupon.github.io/vue-i18n/api/#properties
     vueI18n: {
       fallbackLocale: "ja",
