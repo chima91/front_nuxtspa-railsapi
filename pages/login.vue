@@ -1,7 +1,7 @@
 <template>
   <user-form-card>
     <template #user-form-card-content>
-      <v-form ref="form" v-model="isValid">
+      <v-form ref="form" v-model="isValid" @submit.prevent="login">
         <user-form-email :email.sync="params.user.email" />
         <user-form-password :password.sync="params.user.password" />
         <v-card-actions>
@@ -11,12 +11,12 @@
         </v-card-actions>
         <v-card-text class="px-0">
           <v-btn
+            type="submit"
             :loading="loading"
             :disabled="!isValid || loading"
             block
             class="white--text"
             color="appblue"
-            @click="login"
           >
             ログイン
           </v-btn>
@@ -29,17 +29,18 @@
 <script>
 export default {
   layout: "before-login",
-  data() {
+  data({ $store }) {
     return {
       isValid: false,
       loading: false,
       params: { user: { email: "", password: "" } },
+      redirectPath: $store.state.loggedIn.homePath
     }
   },
   methods: {
     login() {
       this.loading = true
-      setTimeout(() => (this.loading = false), 1500)
+      this.$router.push(this.redirectPath)
     }
   }
 }
