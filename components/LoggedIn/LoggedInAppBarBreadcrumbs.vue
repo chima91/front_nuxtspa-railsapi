@@ -25,7 +25,7 @@ export default {
         { text: this.$my.pageTitle(currentRouteName) }
       ]
       if(currentRouteName.match(/project/) && !this.$vuetify.breakpoint.xs) {
-        const currentProject = this.$store.state.project.currentProject
+        const currentProject = this.$store.state.project.current
         items.unshift({ text: currentProject.name })
       }
       return items
