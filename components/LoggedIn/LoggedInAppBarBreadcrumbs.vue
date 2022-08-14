@@ -24,8 +24,8 @@ export default {
       const items = [
         { text: this.$my.pageTitle(currentRouteName) }
       ]
-      if(currentRouteName.match(/project/) && !this.$vuetify.breakpoint.xs) {
-        const currentProject = this.$store.state.project.current
+      const currentProject = this.$store.state.project.current
+      if(currentProject && currentRouteName.match(/project/) && !this.$vuetify.breakpoint.xs) {
         items.unshift({ text: currentProject.name })
       }
       return items
