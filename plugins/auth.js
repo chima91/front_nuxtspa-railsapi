@@ -33,9 +33,29 @@ class Authentication {
     this.store.dispatch("getAuthPayload", jwtPayload)
   }
 
-  // ログイン業務
+  // ログイン処理
   login(response) {
     this.setAuth(response)
+  }
+
+  // Vuexの値を初期値に戻す
+  resetVuex() {
+    this.setAuth({ token: null, expires: 0, user: null })
+    this.store.dispatch("getCurrentProject", null)
+    this.store.dispatch("getProjectList", [])
+  }
+
+  // axiosのレスポンス401を許容する
+  resolveUnauthorized(status) {
+    return (status >= 200 && status < 300) || status === 401
+  }
+
+  // ログアウト処理
+  async logout() {
+    await this.$axios.$delete("/api/v1/auth_token", {
+      validateStatus: (status) => this.resolveUnauthorized(status),
+    })
+    this.resetVuex()
   }
 }
 
