@@ -1,10 +1,20 @@
-export default ({ $axios }) => {
+export default ({ $axios, $auth, isDev }) => {
   $axios.onRequest((config) => {
-    console.log(config)
+    config.headers.common["X-Requested-With"] = "XMLHttpRequest"
+    if ($auth.token) {
+      config.headers.common.Authorization = `Bearer ${$auth.token}`
+    }
+    if (isDev) {
+      console.log(config)
+    }
   })
+
   $axios.onResponse((config) => {
-    console.log(config)
+    if (isDev) {
+      console.log(config)
+    }
   })
+
   $axios.onError((e) => {
     console.log(e.response)
   })

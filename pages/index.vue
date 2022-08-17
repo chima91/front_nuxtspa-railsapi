@@ -59,6 +59,7 @@ export default {
     Contact,
     Company,
   },
+  middleware: ['logged-in-redirect'],
   data() {
     return {
       imgHeight: 500,
